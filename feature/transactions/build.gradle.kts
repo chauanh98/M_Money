@@ -8,5 +8,5 @@ android {
 }
 
 dependencies {
-    // Feature specific dependencies
+    implementation(libs.androidx.compose.material.icons.extended)
 }

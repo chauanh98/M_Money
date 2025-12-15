@@ -14,13 +14,16 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.unit.dp
 import androidx.navigation.NavDestination
 import androidx.navigation.NavDestination.Companion.hierarchy
 import androidx.navigation.compose.NavHost
 import com.mmoney.apps.core.designsystem.theme.MMoneyTheme
 import com.mmoney.apps.feature.budget.navigation.budgetScreen
+import com.mmoney.apps.feature.budget.navigation.navigateToBudgetEntry
 import com.mmoney.apps.feature.reports.navigation.reportsScreen
 import com.mmoney.apps.feature.transactions.navigation.TRANSACTIONS_ROUTE
+import com.mmoney.apps.feature.transactions.navigation.navigateToTransactionEntry
 import com.mmoney.apps.feature.transactions.navigation.transactionsScreen
 import com.mmoney.apps.feature.wallets.navigation.navigateToWalletEntry
 import com.mmoney.apps.feature.wallets.navigation.walletsScreen
@@ -42,14 +45,20 @@ fun MMoneyApp(
             NavHost(
                 navController = appState.navController,
                 startDestination = TRANSACTIONS_ROUTE,
-                modifier = Modifier.padding(padding)
+                modifier = Modifier.padding(top = 0.dp)
             ) {
-                transactionsScreen()
+                transactionsScreen(
+                    onNavigateToTransactionEntry = appState.navController::navigateToTransactionEntry,
+                    onBack = appState.navController::popBackStack
+                )
                 walletsScreen(
                     onNavigateToWalletEntry = appState.navController::navigateToWalletEntry,
                     onBack = appState.navController::popBackStack
                 )
-                budgetScreen()
+                budgetScreen(
+                    onNavigateToBudgetEntry = appState.navController::navigateToBudgetEntry,
+                    onBack = appState.navController::popBackStack
+                )
                 reportsScreen()
             }
         }
