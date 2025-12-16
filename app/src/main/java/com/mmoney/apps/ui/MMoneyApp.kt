@@ -45,7 +45,7 @@ fun MMoneyApp(
             NavHost(
                 navController = appState.navController,
                 startDestination = TRANSACTIONS_ROUTE,
-                modifier = Modifier.padding(top = 0.dp)
+                modifier = Modifier.padding(padding)
             ) {
                 transactionsScreen(
                     onNavigateToTransactionEntry = appState.navController::navigateToTransactionEntry,
