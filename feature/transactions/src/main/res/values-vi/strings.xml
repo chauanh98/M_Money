@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="transactions_title">Giao dịch</string>
+    <string name="new_transaction">Giao dịch mới</string>
+    <string name="expense">Chi tiêu</string>
+    <string name="income">Thu nhập</string>
+    <string name="amount">Số tiền</string>
+    <string name="note_optional">Ghi chú (Tùy chọn)</string>
+    <string name="save_transaction">Lưu giao dịch</string>
+    <string name="select_category">Chọn hạng mục</string>
+    <string name="select_account">Chọn tài khoản</string>
+    <string name="date">Ngày</string>
+    <string name="today">Hôm nay</string>
+    <string name="yesterday">Hôm qua</string>
+</resources>

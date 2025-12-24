@@ -1,0 +1,24 @@
+<resources>
+    <!-- Settings Screen -->
+    <string name="settings">Settings</string>
+    <string name="profile">Profile</string>
+    <string name="default_user_name">User</string>
+    <string name="default_user_email">user@mmoney.com</string>
+    
+    <!-- Appearance -->
+    <string name="appearance">Appearance</string>
+    <string name="theme">Theme</string>
+    <string name="theme_system">System Default</string>
+    <string name="theme_light">Light</string>
+    <string name="theme_dark">Dark</string>
+    <string name="select_theme">Select Theme</string>
+    
+    <!-- Language -->
+    <string name="language">Language</string>
+    <string name="app_language">App Language</string>
+    <string name="select_language">Select Language</string>
+    
+    <!-- Common -->
+    <string name="close">Close</string>
+    <string name="navigate">Navigate</string>
+</resources>

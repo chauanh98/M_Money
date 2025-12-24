@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="budget_title">Monthly Budget</string>
+    <string name="set_budget">Set Monthly Budget</string>
+    <string name="monthly_limit">Monthly Limit</string>
+    <string name="save_budget">Save Budget</string>
+    <string name="spent_of">spent of</string>
+    <string name="remaining">Remaining</string>
+    <string name="no_budget_title">No budgets set yet</string>
+    <string name="no_budget_description">Set a budget for a category to track your spending.</string>
+</resources>

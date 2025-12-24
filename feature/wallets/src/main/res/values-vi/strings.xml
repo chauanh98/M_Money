@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="wallets_title">Ví của tôi</string>
+    <string name="new_wallet">Ví mới</string>
+    <string name="wallet_name">Tên ví</string>
+    <string name="initial_balance">Số tiền ban đầu</string>
+    <string name="save_wallet">Lưu ví</string>
+    <string name="wallet_type">Loại ví</string>
+    <string name="total_balance">Tổng số dư</string>
+</resources>

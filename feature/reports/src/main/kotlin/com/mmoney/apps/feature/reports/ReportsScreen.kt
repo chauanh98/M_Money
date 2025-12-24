@@ -35,6 +35,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.StrokeCap
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
@@ -77,7 +78,7 @@ internal fun ReportsScreen(
     Scaffold(
         topBar = {
             TopAppBar(
-                title = { Text("Financial Report") }
+                title = { Text(text = stringResource(id = R.string.reports_title)) }
             )
         }
     ) { padding ->
@@ -113,12 +114,12 @@ internal fun ReportsScreen(
                 Tab(
                     selected = selectedType == TransactionType.EXPENSE,
                     onClick = { onTypeChange(TransactionType.EXPENSE) },
-                    text = { Text("Expense") }
+                    text = { Text(text = stringResource(id = R.string.expense)) }
                 )
                 Tab(
                     selected = selectedType == TransactionType.INCOME,
                     onClick = { onTypeChange(TransactionType.INCOME) },
-                    text = { Text("Income") }
+                    text = { Text(text = stringResource(id = R.string.income)) }
                 )
             }
 
@@ -128,21 +129,23 @@ internal fun ReportsScreen(
                         CircularProgressIndicator()
                     }
                 }
+
                 is ReportsUiState.Empty -> {
-                     Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
+                    Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
                         Text(
-                            "No data for this month",
+                            text = stringResource(id = R.string.no_data_this_month),
                             style = MaterialTheme.typography.bodyLarge
                         )
                     }
                 }
+
                 is ReportsUiState.Success -> {
                     LazyColumn(
                         modifier = Modifier.fillMaxSize()
                     ) {
                         item {
                             // Chart
-                             Box(
+                            Box(
                                 modifier = Modifier
                                     .fillMaxWidth()
                                     .padding(vertical = 16.dp),
@@ -153,7 +156,10 @@ internal fun ReportsScreen(
                                     modifier = Modifier.fillMaxWidth(0.7f)
                                 )
                                 Column(horizontalAlignment = Alignment.CenterHorizontally) {
-                                    Text("Total", style = MaterialTheme.typography.labelMedium)
+                                    Text(
+                                        text = stringResource(id = R.string.total),
+                                        style = MaterialTheme.typography.labelMedium
+                                    )
                                     Text(
                                         formatCurrency(uiState.totalAmount),
                                         style = MaterialTheme.typography.titleLarge,
@@ -183,32 +189,35 @@ fun CategoryReportRow(item: CategoryReportItem) {
         verticalAlignment = Alignment.CenterVertically
     ) {
         // Color Indicator
-         Box(
+        Box(
             modifier = Modifier
                 .width(4.dp)
                 .height(32.dp)
                 .background(item.color, RoundedCornerShape(2.dp))
         )
-        
+
         Spacer(modifier = Modifier.width(12.dp))
-        
+
         Column(modifier = Modifier.weight(1f)) {
             Row(
                 modifier = Modifier.fillMaxWidth(),
                 horizontalArrangement = Arrangement.SpaceBetween
             ) {
-                 Text(item.category.name, style = MaterialTheme.typography.bodyMedium)
-                 Text(
-                     formatCurrency(item.amount),
-                     style = MaterialTheme.typography.bodyMedium,
-                     fontWeight = FontWeight.Bold
-                 )
+                Text(item.category.name, style = MaterialTheme.typography.bodyMedium)
+                Text(
+                    text = formatCurrency(amount = item.amount),
+                    style = MaterialTheme.typography.bodyMedium,
+                    fontWeight = FontWeight.Bold
+                )
             }
             Spacer(modifier = Modifier.height(4.dp))
             Row(verticalAlignment = Alignment.CenterVertically) {
                 LinearProgressIndicator(
                     progress = { item.percentage },
-                    modifier = Modifier.weight(1f).height(6.dp).clip(RoundedCornerShape(3.dp)),
+                    modifier = Modifier
+                        .weight(1f)
+                        .height(6.dp)
+                        .clip(RoundedCornerShape(3.dp)),
                     color = item.color,
                     trackColor = MaterialTheme.colorScheme.surfaceVariant,
                     strokeCap = StrokeCap.Round

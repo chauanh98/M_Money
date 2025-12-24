@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="reports_title">Financial Report</string>
+    <string name="expense">Expense</string>
+    <string name="income">Income</string>
+    <string name="no_data">No data available for this period</string>
+    <string name="no_data_this_month">No data for this month</string>
+    <string name="total">Total</string>
+</resources>

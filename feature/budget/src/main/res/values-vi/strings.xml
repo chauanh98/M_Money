@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="budget_title">Ngân sách hàng tháng</string>
+    <string name="set_budget">Thiết lập ngân sách</string>
+    <string name="monthly_limit">Hạn mức hàng tháng</string>
+    <string name="save_budget">Lưu ngân sách</string>
+    <string name="spent_of">đã dùng trên</string>
+    <string name="remaining">Còn lại</string>
+    <string name="no_budget_title">Chưa có ngân sách nào được thiết lập</string>
+    <string name="no_budget_description">Hãy lập ngân sách cho một hạng mục để theo dõi chi tiêu của bạn.</string>
+</resources>

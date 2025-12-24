@@ -4,7 +4,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.Stable
 import androidx.compose.runtime.remember
 import androidx.navigation.NavDestination
-import androidx.navigation.NavDestination.Companion.hierarchy
 import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.currentBackStackEntryAsState
@@ -14,6 +13,8 @@ import com.mmoney.apps.feature.budget.navigation.BUDGET_ROUTE
 import com.mmoney.apps.feature.budget.navigation.navigateToBudget
 import com.mmoney.apps.feature.reports.navigation.REPORTS_ROUTE
 import com.mmoney.apps.feature.reports.navigation.navigateToReports
+import com.mmoney.apps.feature.settings.navigation.SETTINGS_ROUTE
+import com.mmoney.apps.feature.settings.navigation.navigateToSettings
 import com.mmoney.apps.feature.transactions.navigation.TRANSACTIONS_ROUTE
 import com.mmoney.apps.feature.transactions.navigation.navigateToTransactions
 import com.mmoney.apps.feature.wallets.navigation.WALLETS_ROUTE
@@ -58,28 +59,33 @@ class MMoneyAppState(
             TopLevelDestination.WALLETS -> navController.navigateToWallets(topLevelNavOptions)
             TopLevelDestination.BUDGET -> navController.navigateToBudget(topLevelNavOptions)
             TopLevelDestination.REPORTS -> navController.navigateToReports(topLevelNavOptions)
+            TopLevelDestination.SETTINGS -> navController.navigateToSettings(topLevelNavOptions)
         }
     }
 }
 
 enum class TopLevelDestination(
     val route: String,
-    val iconTextId: String // Using String for label for now
+    val iconTextId: Int  // Changed to Int for string resource ID
 ) {
     TRANSACTIONS(
         route = TRANSACTIONS_ROUTE,
-        iconTextId = "Transactions"
+        iconTextId = com.mmoney.apps.R.string.transactions
     ),
     WALLETS(
         route = WALLETS_ROUTE,
-        iconTextId = "Wallets"
+        iconTextId = com.mmoney.apps.R.string.wallets
     ),
     BUDGET(
         route = BUDGET_ROUTE,
-        iconTextId = "Budget"
+        iconTextId = com.mmoney.apps.R.string.budget
     ),
     REPORTS(
         route = REPORTS_ROUTE,
-        iconTextId = "Reports"
+        iconTextId = com.mmoney.apps.R.string.reports
+    ),
+    SETTINGS(
+        route = SETTINGS_ROUTE,
+        iconTextId = com.mmoney.apps.R.string.settings
     )
 }

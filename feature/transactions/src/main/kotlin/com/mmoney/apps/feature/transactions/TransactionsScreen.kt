@@ -28,6 +28,7 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.mmoney.apps.core.designsystem.theme.ExpenseColor
@@ -61,7 +62,7 @@ internal fun TransactionsScreen(
     Scaffold(
         topBar = {
             TopAppBar(
-                title = { Text("Transactions") },
+                title = { Text(text = stringResource(id = R.string.transactions_title)) },
                 colors = TopAppBarDefaults.topAppBarColors(
                     containerColor = MaterialTheme.colorScheme.background
                 )
@@ -100,7 +101,10 @@ internal fun TransactionsScreen(
                                 .padding(16.dp)
                         ) {
                             Column(modifier = Modifier.weight(1f)) {
-                                Text("Income", style = MaterialTheme.typography.labelMedium)
+                                Text(
+                                    text = stringResource(id = R.string.income),
+                                    style = MaterialTheme.typography.labelMedium
+                                )
                                 Text(
                                     formatCurrency(uiState.totalIncome),
                                     style = MaterialTheme.typography.titleMedium,
@@ -108,7 +112,10 @@ internal fun TransactionsScreen(
                                 )
                             }
                             Column(modifier = Modifier.weight(1f)) {
-                                Text("Expense", style = MaterialTheme.typography.labelMedium)
+                                Text(
+                                    text = stringResource(id = R.string.expense),
+                                    style = MaterialTheme.typography.labelMedium
+                                )
                                 Text(
                                     formatCurrency(uiState.totalExpense),
                                     style = MaterialTheme.typography.titleMedium,
@@ -145,12 +152,16 @@ internal fun TransactionsScreen(
 
 @Composable
 fun DateHeader(date: LocalDate) {
-    val dateStr = if (date == LocalDate.now()) {
-        "Today"
-    } else if (date == LocalDate.now().minusDays(1)) {
-        "Yesterday"
-    } else {
-        date.format(DateTimeFormatter.ofPattern("EEE, dd MMM yyyy"))
+    val dateStr = when (date) {
+        LocalDate.now() -> {
+            stringResource(id = R.string.today)
+        }
+        LocalDate.now().minusDays(1) -> {
+            stringResource(id = R.string.yesterday)
+        }
+        else -> {
+            date.format(DateTimeFormatter.ofPattern("EEE, dd MMM yyyy"))
+        }
     }
 
     Box(

@@ -25,6 +25,7 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
@@ -54,7 +55,7 @@ internal fun BudgetScreen(
     Scaffold(
         topBar = {
             TopAppBar(
-                title = { Text("Monthly Budget") }
+                title = { Text(text = stringResource(id = R.string.budget_title)) }
             )
         },
         floatingActionButton = {
@@ -85,12 +86,12 @@ internal fun BudgetScreen(
                             horizontalAlignment = Alignment.CenterHorizontally
                         ) {
                             Text(
-                                "No budgets set yet",
+                                text = stringResource(id = R.string.no_budget_title),
                                 style = MaterialTheme.typography.titleLarge
                             )
                             Spacer(modifier = Modifier.height(8.dp))
                             Text(
-                                "Set a budget for a category to track your spending.",
+                                text = stringResource(id = R.string.no_budget_description),
                                 style = MaterialTheme.typography.bodyMedium,
                                 textAlign = TextAlign.Center
                             )

@@ -33,6 +33,7 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
@@ -80,7 +81,7 @@ internal fun WalletEntryScreen(
     Scaffold(
         topBar = {
             TopAppBar(
-                title = { Text("New Wallet") },
+                title = { Text(text = stringResource(id = R.string.new_wallet)) },
                 navigationIcon = {
                     IconButton(onClick = onBack) {
                         Icon(Icons.Default.ArrowBack, contentDescription = "Back")
@@ -99,25 +100,25 @@ internal fun WalletEntryScreen(
             OutlinedTextField(
                 value = uiState.name,
                 onValueChange = onNameChange,
-                label = { Text("Wallet Name") },
+                label = { Text(text = stringResource(id = R.string.wallet_name)) },
                 modifier = Modifier.fillMaxWidth()
             )
 
             OutlinedTextField(
                 value = uiState.balance,
                 onValueChange = onBalanceChange,
-                label = { Text("Initial Balance") },
+                label = { Text(text = stringResource(id = R.string.initial_balance)) },
                 keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
                 modifier = Modifier.fillMaxWidth()
             )
 
             Text("Account Type", style = MaterialTheme.typography.labelLarge)
             Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
-                AccountType.values().forEach { type ->
+                AccountType.entries.forEach { type ->
                     FilterChip(
                         selected = uiState.type == type,
                         onClick = { onTypeChange(type) },
-                        label = { Text(type.name) }
+                        label = { Text(text = type.name) }
                     )
                 }
             }
@@ -134,7 +135,7 @@ internal fun WalletEntryScreen(
                 onClick = onSave,
                 modifier = Modifier.fillMaxWidth().height(56.dp)
             ) {
-                Text("Save Wallet")
+                Text(text = stringResource(id = R.string.save_wallet))
             }
         }
     }

@@ -14,7 +14,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class WalletsViewModel @Inject constructor(
-    private val accountRepository: AccountRepository
+    accountRepository: AccountRepository
 ) : ViewModel() {
 
     val uiState: StateFlow<WalletsUiState> = accountRepository.getAccounts()

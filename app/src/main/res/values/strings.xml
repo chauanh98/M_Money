@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">M Money</string>
+    
+    <!-- Navigation -->
+    <string name="transactions">Transactions</string>
+    <string name="wallets">Wallets</string>
+    <string name="budget">Budget</string>
+    <string name="reports">Reports</string>
+    <string name="settings">Settings</string>
 </resources>

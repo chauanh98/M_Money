@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="reports_title">Báo cáo tài chính</string>
+    <string name="expense">Chi tiêu</string>
+    <string name="income">Thu nhập</string>
+    <string name="no_data">Không có dữ liệu trong khoảng thời gian này</string>
+    <string name="no_data_this_month">Không có dữ liệu trong tháng này</string>
+    <string name="total">Tổng cộng</string>
+</resources>

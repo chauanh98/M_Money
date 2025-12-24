@@ -41,6 +41,8 @@ dependencies {
     implementation(libs.androidx.compose.ui.tooling.preview)
     implementation(libs.androidx.compose.material3)
     
+    // Hilt navigation compose
+    implementation(libs.hilt.navigation.compose)
     // Hilt handled by convention plugin
     
     testImplementation(libs.junit)
@@ -50,12 +52,15 @@ dependencies {
     androidTestImplementation(libs.androidx.compose.ui.test.junit4)
     debugImplementation(libs.androidx.compose.ui.tooling)
     debugImplementation(libs.androidx.compose.ui.test.manifest)
-    
+
     implementation(project(":core:designsystem"))
+    implementation(project(":core:model"))
+    implementation(project(":core:data"))
     implementation(project(":feature:transactions"))
     implementation(project(":feature:wallets"))
     implementation(project(":feature:budget"))
     implementation(project(":feature:reports"))
+    implementation(project(":feature:settings"))
     
     implementation(libs.androidx.navigation.compose)
     implementation(libs.androidx.compose.material.icons.extended)

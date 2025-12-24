@@ -1,0 +1,24 @@
+<resources>
+    <!-- Settings Screen -->
+    <string name="settings">Cài đặt</string>
+    <string name="profile">Hồ sơ</string>
+    <string name="default_user_name">Người dùng</string>
+    <string name="default_user_email">nguoidung@mmoney.com</string>
+    
+    <!-- Appearance -->
+    <string name="appearance">Giao diện</string>
+    <string name="theme">Chủ đề</string>
+    <string name="theme_system">Mặc định hệ thống</string>
+    <string name="theme_light">Sáng</string>
+    <string name="theme_dark">Tối</string>
+    <string name="select_theme">Chọn chủ đề</string>
+    
+    <!-- Language -->
+    <string name="language">Ngôn ngữ</string>
+    <string name="app_language">Ngôn ngữ ứng dụng</string>
+    <string name="select_language">Chọn ngôn ngữ</string>
+    
+    <!-- Common -->
+    <string name="close">Đóng</string>
+    <string name="navigate">Điều hướng</string>
+</resources>

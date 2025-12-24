@@ -8,6 +8,7 @@ import com.mmoney.apps.core.database.dao.AccountDao
 import com.mmoney.apps.core.database.dao.BudgetDao
 import com.mmoney.apps.core.database.dao.CategoryDao
 import com.mmoney.apps.core.database.dao.TransactionDao
+import com.mmoney.apps.core.database.dao.UserDao
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -52,6 +53,7 @@ object DatabaseModule {
                 db.execSQL("INSERT INTO accounts (id, name, balance, type, color, icon) VALUES ('acc_bank', 'Bank', 0, 'BANK', '#2196F3', 'account_balance')")
             }
         })
+        .fallbackToDestructiveMigration()  // For development - destroys and recreates on schema changes
         .build()
     }
 
@@ -66,4 +68,7 @@ object DatabaseModule {
 
     @Provides
     fun provideBudgetDao(database: MMoneyDatabase): BudgetDao = database.budgetDao()
+
+    @Provides
+    fun provideUserDao(database: MMoneyDatabase): UserDao = database.userDao()
 }

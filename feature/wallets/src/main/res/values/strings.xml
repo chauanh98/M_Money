@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="wallets_title">My Wallets</string>
+    <string name="new_wallet">New Wallet</string>
+    <string name="wallet_name">Wallet Name</string>
+    <string name="initial_balance">Initial Balance</string>
+    <string name="save_wallet">Save Wallet</string>
+    <string name="wallet_type">Wallet Type</string>
+    <string name="total_balance">Total Balance</string>
+</resources>

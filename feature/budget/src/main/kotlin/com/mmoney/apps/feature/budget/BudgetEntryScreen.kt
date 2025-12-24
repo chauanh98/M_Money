@@ -32,10 +32,13 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.mmoney.apps.core.model.Category
+import com.mmoney.apps.feature.budget.R
 import com.mmoney.apps.feature.budget.components.parseColor
 
 @Composable
@@ -79,7 +82,7 @@ internal fun BudgetEntryScreen(
     Scaffold(
         topBar = {
             TopAppBar(
-                title = { Text("Set Monthly Budget") },
+                title = { Text(text = stringResource(id = R.string.set_budget)) },
                 navigationIcon = {
                     IconButton(onClick = onBack) {
                         Icon(Icons.AutoMirrored.Filled.ArrowBack, contentDescription = "Back")
@@ -95,12 +98,12 @@ internal fun BudgetEntryScreen(
                 .padding(16.dp),
             verticalArrangement = Arrangement.spacedBy(16.dp)
         ) {
-            
+
             // Amount
             OutlinedTextField(
                 value = uiState.amount,
                 onValueChange = onAmountChange,
-                label = { Text("Monthly Limit") },
+                label = { Text(text = stringResource(id = R.string.monthly_limit)) },
                 keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
                 modifier = Modifier.fillMaxWidth(),
                 textStyle = MaterialTheme.typography.displaySmall
@@ -114,24 +117,25 @@ internal fun BudgetEntryScreen(
                 modifier = Modifier.fillMaxWidth()
             ) {
                 categories.forEach { category ->
-                     val isSelected = uiState.selectedCategory?.id == category.id
-                     val bgColor = parseColor(category.color) ?: MaterialTheme.colorScheme.surfaceVariant
-                     
-                     Column(
-                         horizontalAlignment = Alignment.CenterHorizontally,
-                         modifier = Modifier
-                             .clip(RoundedCornerShape(8.dp))
-                             .border(
-                                 width = if (isSelected) 2.dp else 0.dp,
-                                 color = MaterialTheme.colorScheme.primary,
-                                 shape = RoundedCornerShape(8.dp)
-                             )
-                             .background(bgColor.copy(alpha = 0.3f))
-                             .clickable { onCategoryChange(category) }
-                             .padding(8.dp)
-                     ) {
-                         Text(category.name, style = MaterialTheme.typography.bodySmall)
-                     }
+                    val isSelected = uiState.selectedCategory?.id == category.id
+                    val bgColor =
+                        parseColor(category.color) ?: MaterialTheme.colorScheme.surfaceVariant
+
+                    Column(
+                        horizontalAlignment = Alignment.CenterHorizontally,
+                        modifier = Modifier
+                            .clip(RoundedCornerShape(8.dp))
+                            .border(
+                                width = if (isSelected) 2.dp else 0.dp,
+                                color = MaterialTheme.colorScheme.primary,
+                                shape = RoundedCornerShape(8.dp)
+                            )
+                            .background(bgColor.copy(alpha = 0.3f))
+                            .clickable { onCategoryChange(category) }
+                            .padding(8.dp)
+                    ) {
+                        Text(category.name, style = MaterialTheme.typography.bodySmall)
+                    }
                 }
             }
 
@@ -139,9 +143,11 @@ internal fun BudgetEntryScreen(
 
             Button(
                 onClick = onSave,
-                modifier = Modifier.fillMaxWidth().height(56.dp)
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(56.dp)
             ) {
-                Text("Save Budget")
+                Text(text = stringResource(id = R.string.save_budget))
             }
         }
     }

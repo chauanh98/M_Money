@@ -37,6 +37,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
@@ -92,7 +93,7 @@ internal fun TransactionEntryScreen(
     Scaffold(
         topBar = {
             TopAppBar(
-                title = { Text("New Transaction") },
+                title = { Text(text = stringResource(id = R.string.new_transaction)) },
                 navigationIcon = {
                     IconButton(onClick = onBack) {
                         Icon(Icons.AutoMirrored.Filled.ArrowBack, contentDescription = "Back")
@@ -117,13 +118,13 @@ internal fun TransactionEntryScreen(
                 FilterChip(
                     selected = uiState.type == TransactionType.EXPENSE,
                     onClick = { onTypeChange(TransactionType.EXPENSE) },
-                    label = { Text("Expense") },
+                    label = { Text(text = stringResource(id = R.string.expense)) },
                     modifier = Modifier.padding(end = 8.dp)
                 )
                 FilterChip(
                     selected = uiState.type == TransactionType.INCOME,
                     onClick = { onTypeChange(TransactionType.INCOME) },
-                    label = { Text("Income") }
+                    label = { Text(text = stringResource(id = R.string.income)) }
                 )
             }
 
@@ -131,7 +132,7 @@ internal fun TransactionEntryScreen(
             OutlinedTextField(
                 value = uiState.amount,
                 onValueChange = onAmountChange,
-                label = { Text("Amount") },
+                label = { Text(text = stringResource(id = R.string.amount)) },
                 keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
                 modifier = Modifier.fillMaxWidth(),
                 textStyle = MaterialTheme.typography.displaySmall
@@ -141,7 +142,7 @@ internal fun TransactionEntryScreen(
             OutlinedTextField(
                 value = uiState.note,
                 onValueChange = onNoteChange,
-                label = { Text("Note (Optional)") },
+                label = { Text(text = stringResource(id = R.string.note_optional)) },
                 modifier = Modifier.fillMaxWidth()
             )
 
@@ -203,10 +204,10 @@ internal fun TransactionEntryScreen(
                     .fillMaxWidth()
                     .height(56.dp)
             ) {
-                Text("Save Transaction")
+                Text(text = stringResource(id = R.string.save_transaction))
             }
 
-            // Spacer for keybaord
+            // Spacer for keyboard
             Spacer(modifier = Modifier.height(200.dp))
         }
     }

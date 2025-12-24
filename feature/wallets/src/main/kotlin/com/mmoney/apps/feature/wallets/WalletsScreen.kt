@@ -4,10 +4,8 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
-import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
@@ -56,7 +54,7 @@ internal fun WalletsScreen(
     Scaffold(
         topBar = {
             TopAppBar(
-                title = { Text("My Wallets") }
+                title = { Text(text = stringResource(id = R.string.wallets_title)) }
             )
         },
         floatingActionButton = {
@@ -90,12 +88,12 @@ internal fun WalletsScreen(
                         ) {
                             Column(horizontalAlignment = Alignment.CenterHorizontally) {
                                 Text(
-                                    text = "Total Balance",
+                                    text = stringResource(id = R.string.total_balance),
                                     style = MaterialTheme.typography.labelMedium,
                                     color = MaterialTheme.colorScheme.onSurfaceVariant
                                 )
                                 Text(
-                                    text = formatCurrency(uiState.totalBalance),
+                                    text = formatCurrency(amount = uiState.totalBalance),
                                     style = MaterialTheme.typography.displayMedium,
                                     color = MaterialTheme.colorScheme.onSurface
                                 )
