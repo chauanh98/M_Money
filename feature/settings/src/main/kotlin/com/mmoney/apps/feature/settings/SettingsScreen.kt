@@ -17,6 +17,7 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.AccountCircle
+import androidx.compose.material.icons.filled.Category
 import androidx.compose.material.icons.filled.ChevronRight
 import androidx.compose.material.icons.filled.Language
 import androidx.compose.material.icons.filled.Palette
@@ -51,6 +52,7 @@ import com.mmoney.apps.core.model.UserProfile
 
 @Composable
 fun SettingsRoute(
+    onNavigateToCategories: () -> Unit,
     viewModel: SettingsViewModel = hiltViewModel()
 ) {
     val userPreferences by viewModel.userPreferences.collectAsStateWithLifecycle()
@@ -61,7 +63,8 @@ fun SettingsRoute(
         selectedTheme = userPreferences.theme,
         selectedLanguage = userPreferences.language,
         onThemeSelected = viewModel::updateTheme,
-        onLanguageSelected = viewModel::updateLanguage
+        onLanguageSelected = viewModel::updateLanguage,
+        onNavigateToCategories = onNavigateToCategories
     )
 }
 
@@ -72,7 +75,8 @@ fun SettingsScreen(
     selectedTheme: Theme,
     selectedLanguage: Language,
     onThemeSelected: (Theme) -> Unit,
-    onLanguageSelected: (Language) -> Unit
+    onLanguageSelected: (Language) -> Unit,
+    onNavigateToCategories: () -> Unit
 ) {
     var showThemeDialog by remember { mutableStateOf(false) }
     var showLanguageDialog by remember { mutableStateOf(false) }
@@ -154,6 +158,27 @@ fun SettingsScreen(
                 title = stringResource(id = R.string.app_language),
                 subtitle = selectedLanguage.displayName,
                 onClick = { showLanguageDialog = true }
+            )
+
+            HorizontalDivider(
+                modifier = Modifier.padding(horizontal = 16.dp),
+                thickness = DividerDefaults.Thickness,
+                color = DividerDefaults.color
+            )
+
+            // Categories Section
+            Text(
+                text = stringResource(id = R.string.categories),
+                style = MaterialTheme.typography.titleMedium,
+                modifier = Modifier.padding(start = 16.dp, top = 16.dp, bottom = 8.dp),
+                color = MaterialTheme.colorScheme.primary
+            )
+
+            SettingsItem(
+                icon = Icons.Filled.Category,
+                title = stringResource(id = R.string.categories),
+                subtitle = stringResource(id = R.string.categories),
+                onClick = onNavigateToCategories
             )
 
             HorizontalDivider(

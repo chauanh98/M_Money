@@ -21,4 +21,5 @@
     <!-- Common -->
     <string name="close">Close</string>
     <string name="navigate">Navigate</string>
+    <string name="categories">Categories</string>
 </resources>

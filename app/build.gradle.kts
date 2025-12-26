@@ -62,6 +62,7 @@ dependencies {
     implementation(project(":feature:budget"))
     implementation(project(":feature:reports"))
     implementation(project(":feature:settings"))
+    implementation(project(":feature:categories"))
     
     implementation(libs.androidx.navigation.compose)
     implementation(libs.androidx.compose.material.icons.extended)

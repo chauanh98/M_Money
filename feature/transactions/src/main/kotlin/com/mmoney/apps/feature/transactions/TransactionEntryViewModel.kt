@@ -37,7 +37,12 @@ class TransactionEntryViewModel @Inject constructor(
 
     val formState: StateFlow<TransactionFormState> = combine(
         accountRepository.getAccounts(),
-        categoryRepository.getCategories()
+        categoryRepository.getCategories(),
+        // Add a dummy flow or use a snapshot of uiState.type if needed, 
+        // but it's better to filter in the UI or use another combine.
+        // Let's just provide all categories and filter in the UI for simplicity, 
+        // OR combine with a flow of the current type.
+        // Actually, filtering in the UI is easier for now.
     ) { accounts, categories ->
         TransactionFormState.Success(accounts, categories)
     }.stateIn(
@@ -60,7 +65,7 @@ class TransactionEntryViewModel @Inject constructor(
     }
 
     fun onTypeChange(type: TransactionType) {
-        uiState = uiState.copy(type = type)
+        uiState = uiState.copy(type = type, selectedCategory = null)
     }
 
     fun onCategoryChange(category: Category) {

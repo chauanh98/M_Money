@@ -53,6 +53,8 @@ import com.mmoney.apps.feature.transactions.navigation.navigateToTransactionEntr
 import com.mmoney.apps.feature.transactions.navigation.transactionsScreen
 import com.mmoney.apps.feature.wallets.navigation.navigateToWalletEntry
 import com.mmoney.apps.feature.wallets.navigation.walletsScreen
+import com.mmoney.apps.feature.categories.navigation.categoriesScreen
+import com.mmoney.apps.feature.categories.navigation.navigateToCategories
 
 @Composable
 fun MMoneyApp(
@@ -134,7 +136,12 @@ fun MMoneyApp(
                         onBack = appState.navController::popBackStack
                     )
                     reportsScreen()
-                    settingsScreen()
+                    settingsScreen(
+                        onNavigateToCategories = appState.navController::navigateToCategories
+                    )
+                    categoriesScreen(
+                        onBack = appState.navController::popBackStack
+                    )
                 }
             }
         }
@@ -175,7 +182,7 @@ private fun MMoneyBottomBar(
                         overflow = TextOverflow.Ellipsis
                     )
                 },
-                alwaysShowLabel = false
+                alwaysShowLabel = true
             )
         }
     }

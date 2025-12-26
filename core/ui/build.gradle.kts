@@ -12,4 +12,5 @@ dependencies {
     implementation(project(":core:model"))
     
     implementation(libs.androidx.compose.ui.tooling.preview)
+    implementation(libs.androidx.compose.material.icons.extended)
 }

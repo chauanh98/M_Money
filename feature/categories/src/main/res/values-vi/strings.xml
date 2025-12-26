@@ -1,0 +1,13 @@
+<resources>
+    <string name="categories">Danh mục</string>
+    <string name="add_category">Thêm danh mục</string>
+    <string name="edit_category">Sửa danh mục</string>
+    <string name="category_name">Tên danh mục</string>
+    <string name="category_type">Loại danh mục</string>
+    <string name="income">Thu nhập</string>
+    <string name="expense">Chi tiêu</string>
+    <string name="delete_category">Xóa danh mục</string>
+    <string name="delete_category_confirmation">Bạn có chắc chắn muốn xóa danh mục này không?</string>
+    <string name="delete">Xóa</string>
+    <string name="update_category">Cập nhật danh mục</string>
+</resources>

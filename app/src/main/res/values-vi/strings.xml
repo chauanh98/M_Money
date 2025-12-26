@@ -9,4 +9,29 @@
     <string name="settings">Cài đặt</string>
     <string name="no_internet_title">Bạn hiện đang ngoại tuyến</string>
     <string name="internet_restored">Kết nối internet đã được khôi phục</string>
+
+    <!-- Categories -->
+    <string name="categories">Danh mục</string>
+    <string name="add_category">Thêm danh mục</string>
+    <string name="edit_category">Sửa danh mục</string>
+    <string name="category_name">Tên danh mục</string>
+    <string name="category_type">Loại danh mục</string>
+    <string name="income">Thu nhập</string>
+    <string name="expense">Chi tiêu</string>
+    
+    <!-- Default Categories - Income -->
+    <string name="cat_salary">Lương</string>
+    <string name="cat_bonus">Tiền thưởng</string>
+    <string name="cat_gift">Quà tặng</string>
+    <string name="cat_interest">Tiền lãi</string>
+    <string name="cat_other_income">Thu nhập khác</string>
+    
+    <!-- Default Categories - Expense -->
+    <string name="cat_food">Ăn uống</string>
+    <string name="cat_transport">Di chuyển</string>
+    <string name="cat_shopping">Mua sắm</string>
+    <string name="cat_bills">Hóa đơn</string>
+    <string name="cat_entertainment">Giải trí</string>
+    <string name="cat_health">Sức khỏe</string>
+    <string name="cat_other_expense">Chi tiêu khác</string>
 </resources>

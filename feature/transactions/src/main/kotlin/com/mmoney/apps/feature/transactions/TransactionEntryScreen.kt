@@ -1,9 +1,9 @@
 package com.mmoney.apps.feature.transactions
 
 import androidx.compose.foundation.background
-import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.ExperimentalLayoutApi
 import androidx.compose.foundation.layout.FlowRow
@@ -15,9 +15,10 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.statusBars
 import androidx.compose.foundation.rememberScrollState
-import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
@@ -48,7 +49,7 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import com.mmoney.apps.core.model.Account
 import com.mmoney.apps.core.model.Category
 import com.mmoney.apps.core.model.TransactionType
-import com.mmoney.apps.feature.transactions.components.parseColor
+import com.mmoney.apps.core.ui.CategoryIcons
 
 @Composable
 internal fun TransactionEntryRoute(
@@ -177,25 +178,39 @@ internal fun TransactionEntryScreen(
                     verticalArrangement = Arrangement.spacedBy(12.dp),
                     modifier = Modifier.fillMaxWidth()
                 ) {
-                    formState.categories.forEach { category ->
+                    val filteredCategories = formState.categories.filter { it.type == uiState.type }
+                    for (category in filteredCategories) {
                         val isSelected = uiState.selectedCategory?.id == category.id
-                        val bgColor =
-                            parseColor(category.color) ?: MaterialTheme.colorScheme.surfaceVariant
 
                         Column(
                             horizontalAlignment = Alignment.CenterHorizontally,
                             modifier = Modifier
-                                .clip(RoundedCornerShape(8.dp))
-                                .border(
-                                    width = if (isSelected) 2.dp else 0.dp,
-                                    color = MaterialTheme.colorScheme.primary,
-                                    shape = RoundedCornerShape(8.dp)
-                                )
-                                .background(bgColor.copy(alpha = 0.3f))
                                 .clickable { onCategoryChange(category) }
                                 .padding(8.dp)
                         ) {
-                            Text(category.name, style = MaterialTheme.typography.bodySmall)
+                            Box(
+                                modifier = Modifier
+                                    .size(48.dp)
+                                    .clip(CircleShape)
+                                    .background(
+                                        if (isSelected) MaterialTheme.colorScheme.primaryContainer
+                                        else MaterialTheme.colorScheme.surfaceVariant
+                                    ),
+                                contentAlignment = Alignment.Center
+                            ) {
+                                Icon(
+                                    imageVector = CategoryIcons.getIcon(category.icon),
+                                    contentDescription = null,
+                                    modifier = Modifier.size(24.dp),
+                                    tint = if (isSelected) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.onSurfaceVariant
+                                )
+                            }
+                            Spacer(modifier = Modifier.height(4.dp))
+                            Text(
+                                text = category.name,
+                                style = MaterialTheme.typography.bodySmall,
+                                color = if (isSelected) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.onSurface
+                            )
                         }
                     }
                 }

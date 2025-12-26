@@ -40,13 +40,21 @@ object DatabaseModule {
                 // UUIDs are random, so we generate them or use fixed ones for defaults.
                 // Using fixed IDs for defaults is safer for idempotent setup.
                 
-                // Categories
-                db.execSQL("INSERT INTO categories (id, name, type, icon, color) VALUES ('cat_food', 'Eating', 'EXPENSE', 'fastfood', '#FF5722')")
-                db.execSQL("INSERT INTO categories (id, name, type, icon, color) VALUES ('cat_travel', 'Travel', 'EXPENSE', 'flight', '#2196F3')")
-                db.execSQL("INSERT INTO categories (id, name, type, icon, color) VALUES ('cat_shopping', 'Shopping', 'EXPENSE', 'shopping_bag', '#E91E63')")
+                // Categories - Income
                 db.execSQL("INSERT INTO categories (id, name, type, icon, color) VALUES ('cat_salary', 'Salary', 'INCOME', 'payments', '#4CAF50')")
                 db.execSQL("INSERT INTO categories (id, name, type, icon, color) VALUES ('cat_bonus', 'Bonus', 'INCOME', 'attach_money', '#8BC34A')")
-                db.execSQL("INSERT INTO categories (id, name, type, icon, color) VALUES ('cat_extra', 'Extra Work', 'INCOME', 'work', '#FFC107')")
+                db.execSQL("INSERT INTO categories (id, name, type, icon, color) VALUES ('cat_gift', 'Gift', 'INCOME', 'redeem', '#FFC107')")
+                db.execSQL("INSERT INTO categories (id, name, type, icon, color) VALUES ('cat_interest', 'Interest', 'INCOME', 'trending_up', '#03A9F4')")
+                db.execSQL("INSERT INTO categories (id, name, type, icon, color) VALUES ('cat_other_income', 'Other Income', 'INCOME', 'add_circle', '#9E9E9E')")
+                
+                // Categories - Expense
+                db.execSQL("INSERT INTO categories (id, name, type, icon, color) VALUES ('cat_food', 'Food & Drink', 'EXPENSE', 'restaurant', '#FF5722')")
+                db.execSQL("INSERT INTO categories (id, name, type, icon, color) VALUES ('cat_transport', 'Transport', 'EXPENSE', 'directions_car', '#03A9F4')")
+                db.execSQL("INSERT INTO categories (id, name, type, icon, color) VALUES ('cat_shopping', 'Shopping', 'EXPENSE', 'shopping_cart', '#E91E63')")
+                db.execSQL("INSERT INTO categories (id, name, type, icon, color) VALUES ('cat_bills', 'Bills', 'EXPENSE', 'receipt_long', '#607D8B')")
+                db.execSQL("INSERT INTO categories (id, name, type, icon, color) VALUES ('cat_entertainment', 'Entertainment', 'EXPENSE', 'movie', '#9C27B0')")
+                db.execSQL("INSERT INTO categories (id, name, type, icon, color) VALUES ('cat_health', 'Health', 'EXPENSE', 'medical_services', '#F44336')")
+                db.execSQL("INSERT INTO categories (id, name, type, icon, color) VALUES ('cat_other_expense', 'Other Expense', 'EXPENSE', 'help', '#9E9E9E')")
                 
                 // Accounts
                 db.execSQL("INSERT INTO accounts (id, name, balance, type, color, icon) VALUES ('acc_cash', 'Cash', 0, 'CASH', '#4CAF50', 'wallet')")
